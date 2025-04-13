@@ -1,38 +1,55 @@
-// ----- Text input and add button -----
-
-// Get Element ids
-const getMainContainerId = document.getElementById("mainContainer")
-const getInputId = document.getElementById("inputBox")
-const getButtonId = document.getElementById("addButton")
-const getMindMapContainerId = document.getElementById("bubbleContainer")
+// ----- Text input, add button and shape chooser -----
 
 // Create elements
-const createMindMapElement = document.createElement("div")
-const createInputElement = document.createElement("input") // Uses values
-const createButtonElement = document.createElement("button")
+let createInputElement = document.createElement("input") // Uses values
+let createButtonElement = document.createElement("button")
+let createSelectMenu = document.createElement("select")
+let createOptions = document.createElement("option")
 
 // Put classes and ids to elements
-createMindMapElement.classList = "mindMapDiv"
 createInputElement.id = "inputBox"
 createButtonElement.id = "addButton"
+createSelectMenu.id = "selectMenu"
+createOptions.classList = "Options"
 
-const textNodeForButton = document.createTextNode("Add mindmap")
+// Get Element ids
+let getMainContainerId = document.getElementById("mainContainer")
+let getInputId = document.getElementById("inputBox")
+let getButtonId = document.getElementById("addButton")
+let getMindMapContainerId = document.getElementById("bubbleContainer")
+let getSelectMenuId = document.getElementById("selectMenu")
+let getOptionsClass = document.getElementsByClassName("Options")
+
+
+let textNodeForButton = document.createTextNode("Add mindmap")
+
+let textNodeForOptions = document.createTextNode("Square")
 
 // Append some
 createButtonElement.appendChild(textNodeForButton)
+createOptions.appendChild(textNodeForOptions)
 getMainContainerId.appendChild(createInputElement)
 getMainContainerId.appendChild(createButtonElement)
-getMainContainerId.appendChild(createMindMapElement)
+getMainContainerId.appendChild(createSelectMenu)
+document.getElementById("selectMenu").appendChild(createOptions)
+
+// ------ Choose shape and event clicker ------
+
+
 
 // Spit on that thang
 document.getElementById("addButton").addEventListener("click", () => {
 	console.log("Works")
-	const inputValue = document.getElementById("inputBox").value
-	const textNodeValue = document.createTextNode(inputValue)
+	let createMindMapDiv = document.createElement("div")
 
-	document.getElementById("bubbleContainer").appendChild(createMindMapElement)
+	let inputValue = document.getElementById("inputBox").value
+	let textNodeValue = document.createTextNode(inputValue)
 
-	createMindMapElement.appendChild(textNodeValue)
+	document.getElementById("bubbleContainer").appendChild(createMindMapDiv)
+
+	createMindMapDiv.classList = "mindMapDiv"
+
+	createMindMapDiv.appendChild(textNodeValue)
 
 	document.getElementById("inputBox").value = ""
 
